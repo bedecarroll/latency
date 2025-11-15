@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "src/main.ts",
   "devDependencies": {
-    "typescript": "^5.0.0"
+    "typescript": "^5.9.3"
   },
   "description": "Network latency calculator based on distance between sites",
   "scripts": {
