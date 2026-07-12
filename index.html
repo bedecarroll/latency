@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latency</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-bar">
+                <h1>Latency</h1>
+                <button id="theme-toggle-btn" class="theme-toggle-btn" aria-describedby="theme-help" title="Toggle Dark Mode">&#9728;&#65039;</button>
+            </div>
+            <div id="theme-help" class="sr-only">Switch between light and dark theme</div>
+            <p>Calculate network latency based on distance between sites</p>
+            <p class="info-note">Speed of light in fiber: 124 miles/millisecond (199.65 km/ms)</p>
+        </header>
+        
+        <main>
+            <div class="input-section">
+                <div class="input-group">
+                    <label for="distance-input">Distance between sites:</label>
+                    <input type="number" id="distance-input" placeholder="Enter distance..." min="0" step="0.1" aria-describedby="distance-help">
+                    <div id="distance-help" class="sr-only">Enter the distance between network sites</div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="unit-select">Distance unit:</label>
+                    <select id="unit-select" aria-describedby="unit-help">
+                        <option value="miles">Miles</option>
+                        <option value="km">Kilometers</option>
+                    </select>
+                    <div id="unit-help" class="sr-only">Select the unit for distance measurement</div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="fudge-input">Fudge factor (%):</label>
+                    <input type="number" id="fudge-input" value="30" min="0" max="200" step="1" aria-describedby="fudge-help">
+                    <div id="fudge-help" class="sr-only">Percentage to account for routing overhead and real-world conditions</div>
+                </div>
+            </div>
+            
+            <div id="results" class="results-section">
+                <div class="result-card">
+                    <h3>One-way Latency</h3>
+                    <div id="oneway-result" class="result-value">--</div>
+                    <div class="result-unit">milliseconds</div>
+                </div>
+                
+                <div class="result-card">
+                    <h3>Round-trip Time (RTT)</h3>
+                    <div id="rtt-result" class="result-value">--</div>
+                    <div class="result-unit">milliseconds</div>
+                </div>
+            </div>
+            
+            <div class="info-section">
+                <h3>Calculation Formula</h3>
+                <div class="formula-box">
+                    <div class="formula">
+                        <strong>One-way Latency = (Distance ÷ 124) × (1 + Fudge Factor %)</strong>
+                    </div>
+                    <div class="formula">
+                        <strong>Round-trip Time (RTT) = One-way Latency × 2</strong>
+                    </div>
+                </div>
+                <h3>About the Calculation</h3>
+                <p>This calculator estimates network latency based on the theoretical speed of light in fiber optic cables.</p>
+                <ul>
+                    <li><strong>Speed of light in fiber:</strong> 124 miles/millisecond (199.65 km/ms)</li>
+                    <li><strong>Fudge factor:</strong> Accounts for routing inefficiencies, equipment delays, and non-direct paths</li>
+                    <li><strong>Typical fudge factors:</strong> 30-50% for terrestrial networks, 10-20% for direct fiber connections</li>
+                </ul>
+            </div>
+        </main>
+    </div>
+    
+    <script type="module" src="dist/main.js"></script>
+</body>
+</html>
